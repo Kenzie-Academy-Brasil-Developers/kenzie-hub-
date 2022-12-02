@@ -4,11 +4,9 @@ import { registerSchema } from "./registerSchema";
 import { useState } from "react";
 import { api } from "../../Services/api";
 
-
 // /sessions
 
 export const Login = () => {
-  
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -21,11 +19,11 @@ export const Login = () => {
   });
 
   const userLogin = async (formData) => {
-    const tokenKey = "@token";
     try {
       setLoading(true);
       const response = await api.post("sessions", formData);
-      localStorage.setItem(tokenKey, response.data.token);
+      localStorage.setItem("@token", response.data.token);
+
       //toast.success(response.data.message);
     } catch (error) {
       //toast.error(error.response.data.message);
