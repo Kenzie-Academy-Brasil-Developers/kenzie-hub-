@@ -3,6 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "./registerSchema";
 import { useState } from "react";
 import { api } from "../../Services/api";
+import { Navigate } from "react-router-dom";
 
 // /users
 

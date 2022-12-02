@@ -3,11 +3,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "./registerSchema";
 import { useState } from "react";
 import { api } from "../../Services/api";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // /sessions
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -23,8 +28,8 @@ export const Login = () => {
       setLoading(true);
       const response = await api.post("sessions", formData);
       localStorage.setItem("@token", response.data.token);
-
-      //toast.success(response.data.message);
+      setUser(response.data.user);
+      navigate("/dashboard")
     } catch (error) {
       //toast.error(error.response.data.message);
       console.log(error);
@@ -66,7 +71,9 @@ export const Login = () => {
 
       <div>
         <label>Ainda não possui uma conta?</label>
-        <button>Cadastre-se</button>
+        <button type="button">
+          <Link to="/register">Cadastre-se</Link>
+        </button>
       </div>
     </section>
   );
