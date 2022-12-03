@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { StyleDiv, StyleForm, StyleSection } from "../../style/form";
 import { StyleFildeset, StyleInput } from "../../components/Fieldeset/style";
-import { StyledButton, ThemeButton } from "../../style/components/button";
+import { ThemeButton } from "../../style/button";
 import { logo } from "../../assets/logo.svg";
-import { StyledTitle} from "../../style/typography";
+
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);

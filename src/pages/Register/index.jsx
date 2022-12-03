@@ -10,7 +10,7 @@ import {
   StyleSelect,
 } from "../../components/Fieldeset/style";
 import { Link, useNavigate } from "react-router-dom";
-import { ThemeButton } from "../../style/components/button";
+import { ThemeButton } from "../../style/button";
 
 export const Register = () => {
   const navigate = useNavigate();

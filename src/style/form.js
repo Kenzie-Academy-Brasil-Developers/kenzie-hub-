@@ -7,11 +7,16 @@ export const StyleSection = styled.section`
   display: flex;
   flex-direction: column;
   text-align: center;
-
+  
   h1 {
     margin: 20px 0;
   }
-`;
+  
+  @media(min-width: 600px){
+    width: 370px;
+    
+  }
+  `;
 
 export const StyleForm = styled.form`
   width: 100%;
@@ -23,6 +28,7 @@ export const StyleForm = styled.form`
   align-items: center;
   gap: 15px;
   background-color: var(--color-grey-3);
+  border-radius: var(--border-radius);
 `;
 
 export const StyleDiv = styled.div`

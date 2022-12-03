@@ -13,6 +13,8 @@ export const Global = createGlobalStyle`
     --color-grey-0: #F8F9FA;
     --color-success: #3FE864;
     --color-error: #E83F5B;
+
+    --border-radius: 4px;
   }
 
   @media (min-width: 700px) {

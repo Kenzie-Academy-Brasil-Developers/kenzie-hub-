@@ -19,7 +19,7 @@ export const StyleInput = styled.input`
   margin: 5px auto;
   padding: 10px;
   background-color: var(--color-grey-2);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 `;
 
 export const StyleSelect = styled.select`
@@ -27,6 +27,6 @@ export const StyleSelect = styled.select`
   margin: 5px auto;
   padding: 10px;
   background-color: var(--color-grey-2);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   color: var(--color-grey-1);
 `;
