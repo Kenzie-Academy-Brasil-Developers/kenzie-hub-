@@ -3,13 +3,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "./registerSchema";
 import { useState } from "react";
 import { api } from "../../Services/api";
-import { StyleDiv, StyleForm, StyleSection } from "../../style/form";
+import { StyleDivTop, StyleForm, StyleSection } from "../../style/form";
 import {
   StyleFildeset,
   StyleInput,
   StyleSelect,
 } from "../../components/Fieldeset/style";
 import { Link, useNavigate } from "react-router-dom";
+import { ThemeButton } from "../../style/components/button";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -46,10 +47,13 @@ export const Register = () => {
 
   return (
     <StyleSection>
-      <div>
+      <StyleDivTop>
         <h1>Logo</h1>
-        <Link to="/">Voltar</Link>
-      </div>
+        <ThemeButton buttonSize="default"
+          buttonColor="grey3">
+          <Link to="/">Voltar</Link>
+        </ThemeButton>
+      </StyleDivTop>
       <StyleForm onSubmit={handleSubmit(submit)} noValidate>
         <StyleFildeset>
           <label>Name</label>
@@ -132,10 +136,14 @@ export const Register = () => {
             <p>{errors.course_module.message}</p>
           )}
         </StyleFildeset>
-
-        <button type="submit" disabled={loading}>
+        <ThemeButton
+          type="submit"
+          disabled={loading}
+          buttonSize="big"
+          buttonColor="redDesable"
+        >
           {loading ? "...carregando" : "Cadastrar"}
-        </button>
+        </ThemeButton>
       </StyleForm>
     </StyleSection>
   );

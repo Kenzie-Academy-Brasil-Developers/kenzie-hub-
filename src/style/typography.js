@@ -1,14 +1,6 @@
 import styled, { css } from "styled-components";
-import { BaseTitle } from "./components/BaseTitle";
 
-export const StyledTitle = styled(BaseTitle)`
-  text-align: ${({ textAlign }) => textAlign};
-  color: ${({ theme }) => theme.color.black};
-`;
-
-
-
-export const StyledParagraph = styled.p`
+export const ThemeParagraph = styled.p`
   font-size: 12px;
 
   ${({ pStyle }) => {

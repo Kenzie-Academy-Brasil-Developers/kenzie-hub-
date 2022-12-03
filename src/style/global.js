@@ -34,8 +34,8 @@ export const Global = createGlobalStyle`
   }
 
   body {
-    background: var(--color-background);
-    color: var(--color-text);
+    color: var(--color-background);
+    background-color: var(--color-grey-4);
     /* -webkit-font-smoothing: antialiased; */
     overflow-x: hidden;
   }
@@ -61,6 +61,7 @@ export const Global = createGlobalStyle`
   button{
     cursor: pointer;
     border: none;
+    color: var(--color-background);
     background: transparent;
   }
 `;

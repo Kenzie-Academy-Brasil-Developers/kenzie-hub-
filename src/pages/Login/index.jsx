@@ -1,12 +1,15 @@
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "./registerSchema";
-import { useState } from "react";
 import { api } from "../../Services/api";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { StyleDiv, StyleForm, StyleSection } from "../../style/form";
 import { StyleFildeset, StyleInput } from "../../components/Fieldeset/style";
+import { StyledButton, ThemeButton } from "../../style/components/button";
+import { logo } from "../../assets/logo.svg";
+import { StyledTitle} from "../../style/typography";
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -47,7 +50,12 @@ export const Login = () => {
 
   return (
     <StyleSection>
+      <div>
+        {/* <img src={logo} alt="Logo" /> */}
+        <h1>Kenzie Hub</h1>
+      </div>
       <StyleForm onSubmit={handleSubmit(submit)} noValidate>
+        <h2>Login</h2>
         <StyleFildeset>
           <label>Email</label>
           <StyleInput
@@ -70,14 +78,19 @@ export const Login = () => {
           {errors.password?.message && <p>{errors.password.message}</p>}
         </StyleFildeset>
 
-        <button type="submit" disabled={loading}>
+        <ThemeButton
+          type="submit"
+          disabled={loading}
+          buttonSize="big"
+          buttonColor="red"
+        >
           {loading ? "...carregando" : "Entrar"}
-        </button>
+        </ThemeButton>
         <StyleDiv>
           <label>Ainda não possui uma conta?</label>
-          <button type="button">
+          <ThemeButton type="button" buttonSize="big" buttonColor="grey">
             <Link to="/register">Cadastre-se</Link>
-          </button>
+          </ThemeButton>
         </StyleDiv>
       </StyleForm>
     </StyleSection>

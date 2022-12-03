@@ -10,7 +10,7 @@ export const App = () => {
   return (
     <ThemeProvider theme={darkMode ? darkTheme : mainTheme}>
       <div className="App">
-        <button onClick={() => console.log("oi")}>Alternar tema</button>
+        {/* <button onClick={() => console.log("oi")}>Alternar tema</button> */}
         <Global />
         <RoutesComponent />
         {/* setDarkMode(!darkMode) */}

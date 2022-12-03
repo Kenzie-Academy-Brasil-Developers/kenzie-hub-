@@ -1,21 +1,32 @@
 import styled from "styled-components";
 
 export const StyleFildeset = styled.fieldset`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
   border: none;
+
+  label {
+    width: 80%;
+    padding: 10px 15px;
+    text-align: left;
+  }
 `;
 
 export const StyleInput = styled.input`
-  width: 100%;
+  width: 95%;
+  margin: 5px auto;
   padding: 10px;
-  background-color: #f2f9;
+  background-color: var(--color-grey-2);
+  border-radius: 4px;
 `;
 
 export const StyleSelect = styled.select`
-  width: 100%;
+  width: 95%;
+  margin: 5px auto;
   padding: 10px;
-  background-color: #f2f9;
-`
+  background-color: var(--color-grey-2);
+  border-radius: 4px;
+  color: var(--color-grey-1);
+`;
