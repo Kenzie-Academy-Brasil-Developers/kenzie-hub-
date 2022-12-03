@@ -49,12 +49,12 @@ export const Register = () => {
     <StyleSection>
       <StyleDivTop>
         <h1>Logo</h1>
-        <ThemeButton buttonSize="default"
-          buttonColor="grey3">
+        <ThemeButton buttonSize="default" buttonColor="grey3">
           <Link to="/">Voltar</Link>
         </ThemeButton>
       </StyleDivTop>
       <StyleForm onSubmit={handleSubmit(submit)} noValidate>
+        <h2>Cadastro</h2>
         <StyleFildeset>
           <label>Name</label>
           <StyleInput
