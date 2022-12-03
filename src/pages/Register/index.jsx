@@ -3,11 +3,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "./registerSchema";
 import { useState } from "react";
 import { api } from "../../Services/api";
-import { Navigate } from "react-router-dom";
-
-// /users
+import { StyleDiv, StyleForm, StyleSection } from "../../style/form";
+import {
+  StyleFildeset,
+  StyleInput,
+  StyleSelect,
+} from "../../components/Fieldeset/style";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Register = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -40,78 +45,98 @@ export const Register = () => {
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit(submit)} noValidate>
-        <label>Name</label>
-        <input
-          type="text"
-          placeholder="Digite aqui seu nome"
-          disabled={loading}
-          {...register("name")}
-        />
-        {errors.name?.message && <p>{errors.name.message}</p>}
+    <StyleSection>
+      <div>
+        <h1>Logo</h1>
+        <Link to="/">Voltar</Link>
+      </div>
+      <StyleForm onSubmit={handleSubmit(submit)} noValidate>
+        <StyleFildeset>
+          <label>Name</label>
+          <StyleInput
+            type="text"
+            placeholder="Digite aqui seu nome"
+            disabled={loading}
+            {...register("name")}
+          />
+          {errors.name?.message && <p>{errors.name.message}</p>}
+        </StyleFildeset>
 
-        <label>Email</label>
-        <input
-          type="email"
-          placeholder="Digite aqui seu email"
-          disabled={loading}
-          {...register("email")}
-        />
-        {errors.email?.message && <p>{errors.email.message}</p>}
+        <StyleFildeset>
+          <label>Email</label>
+          <StyleInput
+            type="email"
+            placeholder="Digite aqui seu email"
+            disabled={loading}
+            {...register("email")}
+          />
+          {errors.email?.message && <p>{errors.email.message}</p>}
+        </StyleFildeset>
 
-        <label>Senha</label>
-        <input
-          type="password"
-          placeholder="Digite aqui sua senha"
-          disabled={loading}
-          {...register("password")}
-        />
-        {errors.password?.message && <p>{errors.password.message}</p>}
+        <StyleFildeset>
+          <label>Senha</label>
+          <StyleInput
+            type="password"
+            placeholder="Digite aqui sua senha"
+            disabled={loading}
+            {...register("password")}
+          />
+          {errors.password?.message && <p>{errors.password.message}</p>}
+        </StyleFildeset>
 
-        <label>Confirmar senha</label>
-        <input
-          type="password"
-          placeholder="Digite novamente sua senha"
-          disabled={loading}
-          {...register("passwordConfirmation")}
-        />
-        {errors.passwordConfirmation?.message && (
-          <p>{errors.passwordConfirmation.message}</p>
-        )}
+        <StyleFildeset>
+          {" "}
+          <label>Confirmar senha</label>
+          <StyleInput
+            type="password"
+            placeholder="Digite novamente sua senha"
+            disabled={loading}
+            {...register("passwordConfirmation")}
+          />
+          {errors.passwordConfirmation?.message && (
+            <p>{errors.passwordConfirmation.message}</p>
+          )}
+        </StyleFildeset>
 
-        <label>Bio</label>
-        <input
-          type="text"
-          placeholder="Fale sobre você"
-          disabled={loading}
-          {...register("bio")}
-        />
-        {errors.bio?.message && <p>{errors.bio.message}</p>}
+        <StyleFildeset>
+          {" "}
+          <label>Bio</label>
+          <StyleInput
+            type="text"
+            placeholder="Fale sobre você"
+            disabled={loading}
+            {...register("bio")}
+          />
+          {errors.bio?.message && <p>{errors.bio.message}</p>}
+        </StyleFildeset>
 
-        <label>Contato</label>
-        <input
-          type="tel"
-          placeholder="Opção de contato"
-          disabled={loading}
-          {...register("contact")}
-        />
-        {errors.contact?.message && <p>{errors.contact.message}</p>}
+        <StyleFildeset>
+          <label>Contato</label>
+          <StyleInput
+            type="tel"
+            placeholder="Opção de contato"
+            disabled={loading}
+            {...register("contact")}
+          />
+          {errors.contact?.message && <p>{errors.contact.message}</p>}
+        </StyleFildeset>
 
-        <select disabled={loading} {...register("course_module")}>
-          <option value=""></option>
-          <option value="Primeiro Módulo">Primeiro Módulo</option>
-          <option value="Segundo Módulo">Segundo Módulo</option>
-          <option value="Terceiro Módulo">Terceiro Módulo</option>
-        </select>
-        {errors.course_module?.message && <p>{errors.course_module.message}</p>}
+        <StyleFildeset>
+          <label>Selecione seu módulo</label>
+          <StyleSelect disabled={loading} {...register("course_module")}>
+            <option value="Primeiro Módulo">Primeiro Módulo</option>
+            <option value="Segundo Módulo">Segundo Módulo</option>
+            <option value="Terceiro Módulo">Terceiro Módulo</option>
+          </StyleSelect>
+          {errors.course_module?.message && (
+            <p>{errors.course_module.message}</p>
+          )}
+        </StyleFildeset>
 
         <button type="submit" disabled={loading}>
-        {loading
-            ? "...carregando"
-            : "Cadastrar"}
+          {loading ? "...carregando" : "Cadastrar"}
         </button>
-      </form>
-    </section>
+      </StyleForm>
+    </StyleSection>
   );
 };

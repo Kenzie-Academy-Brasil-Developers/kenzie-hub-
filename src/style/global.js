@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-
 export const Global = createGlobalStyle`
   :root {
     --color-background: #FFFFFF;
@@ -43,14 +42,25 @@ export const Global = createGlobalStyle`
 
   body, input, button, textarea {
     font-family: 'Inter', sans-serif;
-    font-size: 1.6rem;
+    font-size: 16px;
   }
 
-  h1, h2, h3, h4, h5, h6, strong {
-    font-weight: 500;
+  h1, h2, h3, h4, h5, h6, p, a, span, li, button, input{
+        font-family: 'Roboto', sans-serif;
+    }
+
+  a{
+    color: unset;
+    text-decoration: none;
   }
 
-  button {
+  ul, ol, li{
+    list-style: none;
+  }
+
+  button{
     cursor: pointer;
+    border: none;
+    background: transparent;
   }
 `;

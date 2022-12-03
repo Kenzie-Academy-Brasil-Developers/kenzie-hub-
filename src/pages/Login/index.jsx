@@ -5,8 +5,8 @@ import { useState } from "react";
 import { api } from "../../Services/api";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-// /sessions
+import { StyleDiv, StyleForm, StyleSection } from "../../style/form";
+import { StyleFildeset, StyleInput } from "../../components/Fieldeset/style";
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -27,9 +27,11 @@ export const Login = () => {
     try {
       setLoading(true);
       const response = await api.post("sessions", formData);
-      localStorage.setItem("@token", response.data.token);
+      console.log(response.data.user.name);
+      console.log(response.data.user.course_module);
+      localStorage.setItem("@TOKEN", response.data.token);
       setUser(response.data.user);
-      navigate("/dashboard")
+      navigate("/dashboard");
     } catch (error) {
       //toast.error(error.response.data.message);
       console.log(error);
@@ -44,37 +46,40 @@ export const Login = () => {
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit(submit)} noValidate>
-        <label>Email</label>
-        <input
-          type="email"
-          placeholder="email@email.com"
-          disabled={loading}
-          {...register("email")}
-        />
-        {errors.email?.message && <p>{errors.email.message}</p>}
+    <StyleSection>
+      <StyleForm onSubmit={handleSubmit(submit)} noValidate>
+        <StyleFildeset>
+          <label>Email</label>
+          <StyleInput
+            type="email"
+            placeholder="email@email.com"
+            disabled={loading}
+            {...register("email")}
+          />
+          {errors.email?.message && <p>{errors.email.message}</p>}
+        </StyleFildeset>
 
-        <label>Senha</label>
-        <input
-          type="password"
-          placeholder="Digite sua senha"
-          disabled={loading}
-          {...register("password")}
-        />
-        {errors.password?.message && <p>{errors.password.message}</p>}
+        <StyleFildeset>
+          <label>Senha</label>
+          <StyleInput
+            type="password"
+            placeholder="Digite sua senha"
+            disabled={loading}
+            {...register("password")}
+          />
+          {errors.password?.message && <p>{errors.password.message}</p>}
+        </StyleFildeset>
 
         <button type="submit" disabled={loading}>
           {loading ? "...carregando" : "Entrar"}
         </button>
-      </form>
-
-      <div>
-        <label>Ainda não possui uma conta?</label>
-        <button type="button">
-          <Link to="/register">Cadastre-se</Link>
-        </button>
-      </div>
-    </section>
+        <StyleDiv>
+          <label>Ainda não possui uma conta?</label>
+          <button type="button">
+            <Link to="/register">Cadastre-se</Link>
+          </button>
+        </StyleDiv>
+      </StyleForm>
+    </StyleSection>
   );
 };
