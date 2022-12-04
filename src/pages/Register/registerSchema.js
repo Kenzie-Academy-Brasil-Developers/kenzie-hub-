@@ -13,7 +13,10 @@ export const registerSchema = yup.object().shape({
   password: yup
     .string()
     .required("A senha é obrigatória")
-    .min(6, "É necessário uma senha de pelo menos 6 dígitos"),
+    .matches(
+      /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Zaz]).*$/,
+      "Senha invalida"
+    ),
   passwordConfirmation: yup
     .string()
     .oneOf([yup.ref("password"), null], "Senha está diferente"),

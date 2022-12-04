@@ -13,8 +13,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { ThemeButton } from "../../style/button";
 
 export const Register = () => {
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -26,11 +27,12 @@ export const Register = () => {
   });
 
   const userRegister = async (formData) => {
-    console.log(formData);
+  
     try {
       setLoading(true);
       const response = await api.post("users", formData);
-      console.log(response.data);
+      console.log(response);
+      navigate("/");
       //toast.success(response.data.message);
     } catch (error) {
       //toast.error(error.response.data.message);

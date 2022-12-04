@@ -3,8 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "./registerSchema";
 import { api } from "../../Services/api";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { StyleDiv, StyleForm, StyleSection } from "../../style/form";
 import { StyleFildeset, StyleInput } from "../../components/Fieldeset/style";
 import { ThemeButton } from "../../style/button";
@@ -13,7 +12,6 @@ import { logo } from "../../assets/logo.svg";
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   const {
@@ -30,10 +28,8 @@ export const Login = () => {
     try {
       setLoading(true);
       const response = await api.post("sessions", formData);
-      console.log(response.data.user.name);
-      console.log(response.data.user.course_module);
-      localStorage.setItem("@TOKEN", response.data.token);
-      setUser(response.data.user);
+      localStorage.setItem("@TOKEN", JSON.stringify(response.data.token));
+      localStorage.setItem("@USERID", JSON.stringify(response.data.user.id))
       navigate("/dashboard");
     } catch (error) {
       //toast.error(error.response.data.message);
