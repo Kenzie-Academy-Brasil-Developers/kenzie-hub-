@@ -5,8 +5,8 @@ import { Global } from "./style/global";
 // bug no redirecionamento das páginas;
 // não estou conseguindo usar img;
 // conseguir consertar a estilização dos inputs;
+// estilizar a main
 // criar toasts;
-
 
 export const App = () => {
   return (
