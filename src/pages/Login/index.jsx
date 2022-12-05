@@ -28,6 +28,7 @@ export const Login = () => {
     try {
       setLoading(true);
       const response = await api.post("sessions", formData);
+      localStorage.clear()
       localStorage.setItem("@TOKEN", JSON.stringify(response.data.token));
       localStorage.setItem("@USERID", JSON.stringify(response.data.user.id))
       navigate("/dashboard");
