@@ -1,18 +1,25 @@
+import { AuthProvider } from "./contexts/AuthContext";
 import { RoutesComponent } from "./routes";
+
 import { Global } from "./style/global";
 
-// Renderizar dados do user na dashboard;
-// bug no redirecionamento das páginas;
-// não estou conseguindo usar img;
-// conseguir consertar a estilização dos inputs;
-// estilizar a main
-// criar toasts;
+// * quando é feito uma alteração no token, 
+// usuário não é redirecionado para login;
+// * A dashboard inicia tela branca e só
+// depois de reload que renderiza;
+// * não estou conseguindo usar img;
+// * estilizar a main
+// * criar toasts;
+// * consertar a estilização dos inputs;
+// * bug no redirecionamento das páginas;
 
 export const App = () => {
   return (
     <div className="App">
       <Global />
-      <RoutesComponent />
+      <AuthProvider>
+        <RoutesComponent />
+      </AuthProvider>
     </div>
   );
 };

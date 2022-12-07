@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
+
 import { registerSchema } from "./registerSchema";
-import { api } from "../../Services/api";
-import { Link, useNavigate } from "react-router-dom";
+import { AuthContext} from "../../contexts/AuthContext";
+
 import { StyleDiv, StyleForm, StyleSection } from "../../style/form";
 import { StyleFildeset, StyleInput } from "../../components/Fieldeset/style";
 import { ThemeButton } from "../../style/button";
-import { logo } from "../../assets/logo.svg";
+import logo  from "../../assets/logo.svg";
 
-
-export const Login = () => {
+export const LoginForm = () => {
+  const { login }= useContext(AuthContext)
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
+ 
   const {
     register,
     handleSubmit,
@@ -24,32 +25,15 @@ export const Login = () => {
     resolver: yupResolver(registerSchema),
   });
 
-  const userLogin = async (formData) => {
-    try {
-      setLoading(true);
-      const response = await api.post("sessions", formData);
-      localStorage.clear()
-      localStorage.setItem("@TOKEN", JSON.stringify(response.data.token));
-      localStorage.setItem("@USERID", JSON.stringify(response.data.user.id))
-      navigate("/dashboard");
-    } catch (error) {
-      //toast.error(error.response.data.message);
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const submit = (data) => {
-    userLogin(data);
+    login(data);
     reset();
   };
-
+ 
   return (
     <StyleSection>
       <div>
-        {/* <img src={logo} alt="Logo" /> */}
-        <h1>Kenzie Hub</h1>
+       <img src={logo} alt="Logo" />
       </div>
       <StyleForm onSubmit={handleSubmit(submit)} noValidate>
         <h2>Login</h2>

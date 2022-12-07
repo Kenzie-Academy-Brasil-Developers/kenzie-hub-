@@ -7,9 +7,9 @@ export const mainTheme = {
 };
 
 export const darkTheme = {
-    colors: {
-        white: '#000000',
-        orange: '#622C00',
-        black: '#FFFFFF'
-    },    
-}
+  colors: {
+    white: "#000000",
+    orange: "#622C00",
+    black: "#FFFFFF",
+  },
+};

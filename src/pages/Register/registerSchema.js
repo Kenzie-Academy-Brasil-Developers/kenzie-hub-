@@ -6,16 +6,13 @@ export const registerSchema = yup.object().shape({
     .required("O nome é obrigatório")
     .min(3, "O nome precisa ter no mínimo 3 caracteres")
     .max(161),
-  email: yup
-    .string()
-    .required("O email é obrigatório")
-    .email("Email inválido"),
+  email: yup.string().required("O email é obrigatório").email("Email inválido"),
   password: yup
     .string()
     .required("A senha é obrigatória")
     .matches(
       /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Zaz]).*$/,
-      "Senha invalida"
+      "Sua senha deve ter pelo menos 8 caracteres, uma letra, um número e um símbolo"
     ),
   passwordConfirmation: yup
     .string()
@@ -24,4 +21,3 @@ export const registerSchema = yup.object().shape({
   contact: yup.string().required("O email é obrigatório"),
   course_module: yup.string().required("Escolha o módulo"),
 });
-;

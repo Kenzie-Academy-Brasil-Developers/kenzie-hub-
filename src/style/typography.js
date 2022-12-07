@@ -13,8 +13,8 @@ export const ThemeParagraph = styled.p`
         return css`
           font-style: italic;
         `;
-      default: console.log("Algo está errado com a typography");
-      ;
+      default:
+        console.log("Algo está errado com a typography");
     }
   }}
 `;

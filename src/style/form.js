@@ -7,16 +7,15 @@ export const StyleSection = styled.section`
   display: flex;
   flex-direction: column;
   text-align: center;
-  
+
   h1 {
     margin: 20px 0;
   }
-  
-  @media(min-width: 600px){
+
+  @media (min-width: 600px) {
     width: 370px;
-    
   }
-  `;
+`;
 
 export const StyleForm = styled.form`
   width: 100%;

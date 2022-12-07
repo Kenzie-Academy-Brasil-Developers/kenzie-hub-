@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 export const ThemeButton = styled.button`
- 
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +36,7 @@ export const ThemeButton = styled.button`
         return css`
           background-color: var(--color-primary);
         `;
-        case "redDesable":
+      case "redDesable":
         return css`
           background-color: var(--color-primary-negative);
         `;

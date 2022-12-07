@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
+
+import { AuthContext } from "./contexts/AuthContext";
 import { Dashboard } from "./pages/Dashboard";
-import { Login } from "./pages/Login";
+import { LoginForm } from "./pages/Login";
 import { Register } from "./pages/Register";
 
 export const RoutesComponent = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/" element={<LoginForm />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/dashboard" element={<Dashboard/>}/>
+      {user ? (
+        <Route path="/dashboard" element={<Dashboard />} />
+      ) : (
+        <Route path="/" element={<LoginForm />} />
+      )}
     </Routes>
   );
 };
