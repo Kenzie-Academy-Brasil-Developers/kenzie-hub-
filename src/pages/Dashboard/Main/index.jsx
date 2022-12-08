@@ -1,7 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { ThemeButton } from "../../../style/button";
-import { StyledList, StyledTechAdd, StyledTechs, StyledUserData } from "./style";
+import {
+  StyledList,
+  StyledTechAdd,
+  StyledTechs,
+  StyledUserData,
+} from "./style";
 import add from "../../../assets/add.svg";
 import { AddModal } from "../../../components/AddModal";
 export const Main = () => {
@@ -25,100 +30,19 @@ export const Main = () => {
         </StyledTechAdd>
         <StyledList>
           <ul>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
-            <li>
-              <h3>name tech</h3>
-              <div>
-                <p>nível</p>
-                <button>lixo</button>
-              </div>
-            </li>
+            {data.techs.map((item) => {
+              return (
+                <li>
+                  <h3>name</h3>
+                  <div>
+                    <p>nível</p>
+                    <button>lixo</button>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </StyledList>
-        <AddModal/>
       </StyledTechs>
     </main>
   );

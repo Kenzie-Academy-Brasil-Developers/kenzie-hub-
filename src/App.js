@@ -7,8 +7,6 @@ import { Global } from "./style/global";
 // usuário não é redirecionado para login;
 // * A dashboard inicia tela branca e só
 // depois de reload que renderiza;
-// * não estou conseguindo usar img;
-// * estilizar a main
 // * criar toasts;
 // * consertar a estilização dos inputs;
 // * bug no redirecionamento das páginas;
