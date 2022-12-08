@@ -19,9 +19,8 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
-        const dataProfile = await api.get("profile", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        api.defaults.headers.common.Authorization = `Bearer ${token}`;
+        const dataProfile = await api.get("profile");
 
         setUser(dataProfile);
       } catch (error) {
@@ -44,6 +43,8 @@ export const AuthProvider = ({ children }) => {
       localStorage.clear();
       localStorage.setItem("@TOKEN", JSON.stringify(token));
       localStorage.setItem("@USERID", JSON.stringify(userResponse.id));
+      api.defaults.headers.common.Authorization = `Bearer ${token}`;
+
       navigate("/dashboard");
     } catch (error) {
       //toast.error(error.response.data.message);

@@ -8,11 +8,15 @@ import {
   StyledUserData,
 } from "./style";
 import add from "../../../assets/add.svg";
-import { AddModal } from "../../../components/AddModal";
+import { ModalContext } from "../../../contexts/ModalContext.jsx";
+import { useEffect } from "react";
+
 export const Main = () => {
   const { user } = useContext(AuthContext);
+  const { setModalStatus, modalStatus } = useContext(ModalContext);
   const { data } = user;
-  console.log(user);
+  // console.log(user);
+
   return (
     <main>
       <StyledUserData>
@@ -24,7 +28,14 @@ export const Main = () => {
       <StyledTechs>
         <StyledTechAdd>
           <h4>Tecnologias</h4>
-          <ThemeButton buttonSize="default" buttonColor="grey3">
+          <ThemeButton
+            buttonSize="default"
+            buttonColor="grey3"
+            onClick={(event) => {
+              event.preventDefault()
+              setModalStatus(true)
+            }}
+          >
             <img src={add} alt="+" />
           </ThemeButton>
         </StyledTechAdd>
