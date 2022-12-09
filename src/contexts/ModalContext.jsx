@@ -4,10 +4,10 @@ import { createContext } from "react";
 export const ModalContext = createContext({});
 
 export const ModalProvider = ({ children }) => {
-  const [modalStatus, setModalStatus] = useState(false);
+  const [modalAddStatus, setModalAddStatus] = useState(false);
 
   return (
-    <ModalContext.Provider value={{ modalStatus, setModalStatus }}>
+    <ModalContext.Provider value={{ modalAddStatus, setModalAddStatus }}>
       {children}
     </ModalContext.Provider>
   );

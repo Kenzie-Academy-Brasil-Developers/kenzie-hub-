@@ -18,11 +18,10 @@ import add from "../../assets/add.svg";
 export const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const { data } = user;
-  const { modalStatus, setModalStatus } = useContext(ModalContext);
+  const { modalAddStatus, setModalAddStatus } = useContext(ModalContext);
 
   return (
     <>
-      {modalStatus && <AddModal />}
       <Header />
       <ModalProvider>
         <main>
@@ -38,19 +37,19 @@ export const Dashboard = () => {
               <ThemeButton
                 buttonSize="default"
                 buttonColor="grey3"
-                onClick={() => setModalStatus(true)}
+                onClick={() => setModalAddStatus(true)}
               >
                 <img src={add} alt="+" />
               </ThemeButton>
             </StyledTechAdd>
             <StyledList>
               <ul>
-                {data.techs.map((item) => {
+                {user.data.techs.map((item) => {
                   return (
                     <li>
-                      <h3>name</h3>
+                      <h3>{item.title}</h3>
                       <div>
-                        <p>nível</p>
+                        <p>{item.status}</p>
                         <button>lixo</button>
                       </div>
                     </li>
@@ -61,6 +60,7 @@ export const Dashboard = () => {
           </StyledTechs>
         </main>
       </ModalProvider>
+      {modalAddStatus && <AddModal />}
     </>
   );
 };

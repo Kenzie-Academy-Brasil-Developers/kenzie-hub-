@@ -9,12 +9,12 @@ import logo from "../../assets/logo.svg";
 
 import { StyleDivTop, StyleForm, StyleSection } from "../../style/form";
 import { ThemeButton } from "../../style/button";
+import { AuthContext } from "../../contexts/AuthContext";
 import {
   StyleFildeset,
   StyleInput,
   StyleSelect,
 } from "../../components/Fieldeset/style";
-import { AuthContext } from "../../contexts/AuthContext";
 
 export const Register = () => {
   const { loading } = useContext(AuthContext);
@@ -35,7 +35,6 @@ export const Register = () => {
     try {
       setLoading(true);
       const response = await api.post("users", formData);
-      console.log(response);
       navigate("/");
     } catch (error) {
       console.log(error);
