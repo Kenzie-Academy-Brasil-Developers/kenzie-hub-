@@ -1,20 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { registerSchema } from "./registerSchema";
-import { AuthContext} from "../../contexts/AuthContext";
+import { AuthContext } from "../../contexts/AuthContext";
 
 import { StyleDiv, StyleForm, StyleSection } from "../../style/form";
 import { StyleFildeset, StyleInput } from "../../components/Fieldeset/style";
 import { ThemeButton } from "../../style/button";
-import logo  from "../../assets/logo.svg";
+import logo from "../../assets/logo.svg";
 
 export const LoginForm = () => {
-  const { login }= useContext(AuthContext)
-  const [loading, setLoading] = useState(false);
- 
+  const { login } = useContext(AuthContext);
+  const { loading } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -29,11 +29,11 @@ export const LoginForm = () => {
     login(data);
     reset();
   };
- 
+
   return (
     <StyleSection>
       <div>
-       <img src={logo} alt="Logo" />
+        <img src={logo} alt="Logo" />
       </div>
       <StyleForm onSubmit={handleSubmit(submit)} noValidate>
         <h2>Login</h2>

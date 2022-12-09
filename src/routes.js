@@ -13,11 +13,7 @@ export const RoutesComponent = () => {
     <Routes>
       <Route path="/" element={<LoginForm />} />
       <Route path="/register" element={<Register />} />
-      {user ? (
-        <Route path="/dashboard" element={<Dashboard />} />
-      ) : (
-        <Route path="/" element={<LoginForm />} />
-      )}
+      {user && <Route path="/dashboard" element={<Dashboard />} />}
     </Routes>
   );
 };

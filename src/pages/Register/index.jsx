@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { registerSchema } from "./registerSchema";
 import { api } from "../../Services/api";
-import logo from "../../assets/logo.svg"
+import logo from "../../assets/logo.svg";
 
 import { StyleDivTop, StyleForm, StyleSection } from "../../style/form";
 import { ThemeButton } from "../../style/button";
@@ -14,9 +14,11 @@ import {
   StyleInput,
   StyleSelect,
 } from "../../components/Fieldeset/style";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const Register = () => {
-  const [loading, setLoading] = useState(false);
+  const { loading } = useContext(AuthContext);
+  const { setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const {
@@ -35,9 +37,7 @@ export const Register = () => {
       const response = await api.post("users", formData);
       console.log(response);
       navigate("/");
-      //toast.success(response.data.message);
     } catch (error) {
-      //toast.error(error.response.data.message);
       console.log(error);
     } finally {
       setLoading(false);
@@ -52,7 +52,7 @@ export const Register = () => {
   return (
     <StyleSection>
       <StyleDivTop>
-      <img src={logo} alt="Logo" />
+        <img src={logo} alt="Logo" />
         <ThemeButton buttonSize="default" buttonColor="grey3">
           <Link to="/">Voltar</Link>
         </ThemeButton>

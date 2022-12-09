@@ -1,13 +1,17 @@
+import { useContext } from "react";
+import { ModalContext } from "../../contexts/ModalContext";
 import { ThemeButton } from "../../style/button";
 import { StyleSection } from "../../style/form";
 import { StyleFildeset, StyleInput, StyleSelect } from "../Fieldeset/style";
 
 export const AddModal = () => {
+  const { setModalStatus } = useContext(ModalContext);
+
   return (
     <StyleSection>
       <div>
         <h4>Cadastrar tecnologia</h4>
-        <button>X</button>
+        <button onClick={() => setModalStatus(false)}>X</button>
       </div>
       <form>
         <StyleFildeset>
@@ -22,7 +26,9 @@ export const AddModal = () => {
             <option value="Avançado">Avançado</option>
           </StyleSelect>
         </StyleFildeset>
-        <ThemeButton buttonSize="big" buttonColor="red">Cadastrar Tecnologia</ThemeButton>
+        <ThemeButton buttonSize="big" buttonColor="red">
+          Cadastrar Tecnologia
+        </ThemeButton>
       </form>
     </StyleSection>
   );
