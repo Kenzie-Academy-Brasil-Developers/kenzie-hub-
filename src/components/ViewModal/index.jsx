@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { ModalContext } from "../../contexts/ModalContext";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { addModalSchema } from "./addModalSchema";
+import { viewModalSchema } from "./viewModalSchema";
 import { api } from "../../Services/api";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -12,10 +12,11 @@ import { StyleForm, StyleSection } from "../../style/form";
 import { StyleFildeset, StyleInput, StyleSelect } from "../Fieldeset/style";
 import { StyledModal } from "../../style/modal";
 
-export const AddModal = () => {
-  const { setModalAddStatus } = useContext(ModalContext);
+export const ViewModal = ({ id }) => {
+  console.log(id);
+  const { setModalViewStatus, dataTech } = useContext(ModalContext);
   const { setLoading } = useContext(AuthContext);
-
+  console.log(dataTech);
   const {
     register,
     handleSubmit,
@@ -23,13 +24,13 @@ export const AddModal = () => {
     reset,
   } = useForm({
     mode: "onBlur",
-    resolver: yupResolver(addModalSchema),
+    resolver: yupResolver(viewModalSchema),
   });
 
-  const techAdd = async (formData) => {
+  const techView = async () => {
     try {
       setLoading(true);
-      const response = await api.post("users/techs", formData);
+      const response = await api.post(`users/techs/${id}`);
     } catch (error) {
       console.log(error);
     } finally {
@@ -37,8 +38,8 @@ export const AddModal = () => {
     }
   };
 
-  const submit = (data) => {
-    techAdd(data);
+  const submit = (id) => {
+    techView(id);
     reset();
   };
 
@@ -47,16 +48,12 @@ export const AddModal = () => {
       <StyleSection>
         <div>
           <h4>Cadastrar tecnologia</h4>
-          <button onClick={() => setModalAddStatus(false)}>X</button>
+          <button onClick={() => setModalViewStatus(false)}>X</button>
         </div>
         <StyleForm onSubmit={handleSubmit(submit)} noValidate>
           <StyleFildeset>
             <label>Nome</label>
-            <StyleInput
-              placeholder="Digite o nome da tecnologia"
-              {...register("title")}
-            />
-            {errors.title?.message && <p>{errors.title.message}</p>}
+            <StyleInput value="nome"></StyleInput>
           </StyleFildeset>
           <StyleFildeset>
             <label>Selecionar status</label>
@@ -67,9 +64,8 @@ export const AddModal = () => {
             </StyleSelect>
             {errors.status?.message && <p>{errors.status.message}</p>}
           </StyleFildeset>
-          <ThemeButton buttonSize="big" buttonColor="red">
-            Cadastrar Tecnologia
-          </ThemeButton>
+          <button onClick={console.log("oi")}>Salvar alterações</button>
+          <button>Excluir</button>
         </StyleForm>
       </StyleSection>
     </StyledModal>

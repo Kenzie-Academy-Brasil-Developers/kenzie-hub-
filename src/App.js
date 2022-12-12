@@ -3,18 +3,16 @@ import { RoutesComponent } from "./routes";
 
 import { Global } from "./style/global";
 
-// * abrir modal:
-// renderizar na tela //
-// validar form, yup //
-// fazer envio do form, axios //
-// lista de tech não atualiza sozinha;
-// * quando é feito uma alteração no token,
-// usuário não é redirecionado para login;
 // * A dashboard inicia tela branca e só
 // depois de reload que renderiza;
-// * criar toasts;
-// * consertar a estilização dos inputs;
-// * bug no redirecionamento das páginas;
+// * Terminar estilização dos modais;
+// * Validar modal de visualização;
+// * Botões de atualizar e excluir tech;
+// * Lista de tech não atualiza sozinha;
+// * Quando é feito uma alteração no token,
+// usuário não é redirecionado para login;
+// * Criar toasts;
+// * Consertar a estilização dos inputs;
 
 export const App = () => {
   return (

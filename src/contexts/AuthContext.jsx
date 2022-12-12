@@ -24,7 +24,6 @@ export const AuthProvider = ({ children }) => {
 
         setUser(dataProfile);
       } catch (error) {
-        //toast.error(error.dataProfile.data.message);
         console.log(error);
       } finally {
         setLoading();
@@ -44,10 +43,8 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("@TOKEN", JSON.stringify(token));
       localStorage.setItem("@USERID", JSON.stringify(userResponse.id));
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
-
       navigate("/dashboard");
     } catch (error) {
-      //toast.error(error.response.data.message);
       console.log(error);
     } finally {
       setLoading();

@@ -13,12 +13,19 @@ import {
   StyledUserData,
 } from "./style";
 
-import add from "../../assets/add.svg";
+import iconAdd from "../../assets/add.svg";
+import { ViewModal } from "../../components/ViewModal";
 
 export const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const { data } = user;
-  const { modalAddStatus, setModalAddStatus } = useContext(ModalContext);
+  const {
+    modalAddStatus,
+    setModalAddStatus,
+    modaViewStatus,
+    setModalViewStatus,
+    setDataTech,
+  } = useContext(ModalContext);
 
   return (
     <>
@@ -39,7 +46,7 @@ export const Dashboard = () => {
                 buttonColor="grey3"
                 onClick={() => setModalAddStatus(true)}
               >
-                <img src={add} alt="+" />
+                <img src={iconAdd} alt="+" />
               </ThemeButton>
             </StyledTechAdd>
             <StyledList>
@@ -47,11 +54,15 @@ export const Dashboard = () => {
                 {user.data.techs.map((item) => {
                   return (
                     <li>
-                      <h3>{item.title}</h3>
-                      <div>
-                        <p>{item.status}</p>
-                        <button>lixo</button>
-                      </div>
+                      <button
+                        onClick={() => setModalViewStatus(true)}
+                        onChange={() => setDataTech({ item })}
+                      >
+                        <div>
+                          <h3>{item.title}</h3>
+                          <p>{item.status}</p>
+                        </div>
+                      </button>
                     </li>
                   );
                 })}
@@ -61,6 +72,7 @@ export const Dashboard = () => {
         </main>
       </ModalProvider>
       {modalAddStatus && <AddModal />}
+      {modaViewStatus && <ViewModal />}
     </>
   );
 };

@@ -8,7 +8,6 @@ export const StyleSection = styled.section`
   flex-direction: column;
   text-align: center;
 
-  
   img {
     margin: 20px 0;
   }
@@ -42,7 +41,6 @@ export const StyleDiv = styled.div`
   flex-direction: column;
   text-align: center;
   gap: 15px;
-
 `;
 
 export const StyleDivTop = styled.div`
