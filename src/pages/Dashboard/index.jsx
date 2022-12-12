@@ -7,6 +7,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 import { ThemeButton } from "../../style/button";
 import {
+  StyledContentList,
   StyledList,
   StyledTechAdd,
   StyledTechs,
@@ -58,10 +59,10 @@ export const Dashboard = () => {
                         onClick={() => setModalViewStatus(true)}
                         onChange={() => setDataTech({ item })}
                       >
-                        <div>
+                        <StyledContentList>
                           <h3>{item.title}</h3>
                           <p>{item.status}</p>
-                        </div>
+                        </StyledContentList>
                       </button>
                     </li>
                   );

@@ -54,15 +54,21 @@ export const StyledList = styled.div`
   li {
     margin: 10px 0;
     padding: 15px;
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; */
     background-color: var(--color-grey-4);
     border-radius: var(--border-radius);
 
-    div {
-      display: flex;
-      gap: 10px;
+    button {
+     width: 100%;
     }
   }
+`;
+
+export const StyledContentList = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
