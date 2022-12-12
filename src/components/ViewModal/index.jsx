@@ -12,8 +12,7 @@ import { StyleDivTop, StyleForm, StyleSection } from "../../style/form";
 import { StyleFildeset, StyleInput, StyleSelect } from "../Fieldeset/style";
 import { StyledModal } from "../../style/modal";
 
-export const ViewModal = ({ id }) => {
-  console.log(id);
+export const ViewModal = () => {
   const { setModalViewStatus, dataTech } = useContext(ModalContext);
   const { setLoading } = useContext(AuthContext);
   console.log(dataTech);
@@ -30,7 +29,8 @@ export const ViewModal = ({ id }) => {
   const techDelete = async () => {
     try {
       setLoading(true);
-      const response = await api.delete(`users/techs/${id}`);
+      await api.delete(`users/techs/${dataTech.item.id}`);
+      console.log("deu certo");
     } catch (error) {
       console.log(error);
     } finally {
@@ -63,8 +63,10 @@ export const ViewModal = ({ id }) => {
             </StyleSelect>
             {errors.status?.message && <p>{errors.status.message}</p>}
           </StyleFildeset>
-          <button onClick={() => setModalViewStatus(true)}>Salvar alterações</button>
-          <button onClick={()=> techDelete(id)}>Excluir</button>
+          <button onClick={() => setModalViewStatus(true)}>
+            Salvar alterações
+          </button>
+          <button onClick={() => techDelete()}>Excluir</button>
         </StyleForm>
       </StyleSection>
     </StyledModal>

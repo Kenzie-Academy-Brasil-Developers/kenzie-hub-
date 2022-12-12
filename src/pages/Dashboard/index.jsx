@@ -56,8 +56,11 @@ export const Dashboard = () => {
                   return (
                     <li>
                       <button
-                        onClick={() => setModalViewStatus(true)}
-                        onChange={() => setDataTech({ item })}
+                        onClick={() => { 
+                          setDataTech({ item })
+                          setModalViewStatus(true)
+                        }}
+                      //  onChange={() => setDataTech({ item })}
                       >
                         <StyledContent>
                           <h3>{item.title}</h3>
