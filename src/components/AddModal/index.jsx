@@ -8,7 +8,7 @@ import { api } from "../../Services/api";
 import { AuthContext } from "../../contexts/AuthContext";
 
 import { ThemeButton } from "../../style/button";
-import { StyleForm, StyleSection } from "../../style/form";
+import { StyleDivTop, StyleForm, StyleSection } from "../../style/form";
 import { StyleFildeset, StyleInput, StyleSelect } from "../Fieldeset/style";
 import { StyledModal } from "../../style/modal";
 
@@ -45,10 +45,10 @@ export const AddModal = () => {
   return (
     <StyledModal>
       <StyleSection>
-        <div>
+        <StyleDivTop>
           <h4>Cadastrar tecnologia</h4>
           <button onClick={() => setModalAddStatus(false)}>X</button>
-        </div>
+        </StyleDivTop>
         <StyleForm onSubmit={handleSubmit(submit)} noValidate>
           <StyleFildeset>
             <label>Nome</label>

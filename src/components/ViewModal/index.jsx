@@ -8,7 +8,7 @@ import { api } from "../../Services/api";
 import { AuthContext } from "../../contexts/AuthContext";
 
 import { ThemeButton } from "../../style/button";
-import { StyleForm, StyleSection } from "../../style/form";
+import { StyleDivTop, StyleForm, StyleSection } from "../../style/form";
 import { StyleFildeset, StyleInput, StyleSelect } from "../Fieldeset/style";
 import { StyledModal } from "../../style/modal";
 
@@ -45,10 +45,10 @@ export const ViewModal = ({ id }) => {
   return (
     <StyledModal>
       <StyleSection>
-        <div>
+        <StyleDivTop>
           <h4>Cadastrar tecnologia</h4>
           <button onClick={() => setModalViewStatus(false)}>X</button>
-        </div>
+        </StyleDivTop>
         <StyleForm onSubmit={handleSubmit(submit)} noValidate>
           <StyleFildeset>
             <label>Nome</label>
@@ -63,7 +63,7 @@ export const ViewModal = ({ id }) => {
             </StyleSelect>
             {errors.status?.message && <p>{errors.status.message}</p>}
           </StyleFildeset>
-          <button onClick={console.log("oi")}>Salvar alterações</button>
+          <button onClick={() => setModalViewStatus(true)}>Salvar alterações</button>
           <button onClick={()=> techDelete(id)}>Excluir</button>
         </StyleForm>
       </StyleSection>
