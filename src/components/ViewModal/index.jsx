@@ -27,10 +27,10 @@ export const ViewModal = ({ id }) => {
     resolver: yupResolver(viewModalSchema),
   });
 
-  const techView = async () => {
+  const techDelete = async () => {
     try {
       setLoading(true);
-      const response = await api.post(`users/techs/${id}`);
+      const response = await api.delete(`users/techs/${id}`);
     } catch (error) {
       console.log(error);
     } finally {
@@ -39,7 +39,6 @@ export const ViewModal = ({ id }) => {
   };
 
   const submit = (id) => {
-    techView(id);
     reset();
   };
 
@@ -65,7 +64,7 @@ export const ViewModal = ({ id }) => {
             {errors.status?.message && <p>{errors.status.message}</p>}
           </StyleFildeset>
           <button onClick={console.log("oi")}>Salvar alterações</button>
-          <button>Excluir</button>
+          <button onClick={()=> techDelete(id)}>Excluir</button>
         </StyleForm>
       </StyleSection>
     </StyledModal>
