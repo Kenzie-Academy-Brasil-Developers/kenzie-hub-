@@ -66,7 +66,7 @@ export const StyledList = styled.div`
   }
 `;
 
-export const StyledContentList = styled.div`
+export const StyledContent = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
